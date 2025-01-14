@@ -1,4 +1,8 @@
+/**
+ *  Class contains tests of notifications
+ */
 package ru.skillbox;
+
 
 import ru.skillbox.notification.EmailNotification;
 import ru.skillbox.notification.PushNotification;
@@ -6,7 +10,6 @@ import ru.skillbox.notification.SmsNotification;
 import ru.skillbox.notification_sender.EmailNotificationSender;
 import ru.skillbox.notification_sender.PushNotificationSender;
 import ru.skillbox.notification_sender.SmsNotificationSender;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,14 +32,21 @@ public class Main {
         System.out.println("\n##############################\n");
         smsTest(messageList);
     }
-    public static void emailTest(ArrayList<String> messageList,  ArrayList<String> titleList){
+
+    /**
+     * Create list of emails
+     * Test notifications for this emails
+     * @param messageList list of messages from system to receivers
+     * @param subjectList list of subjects of messages
+     */
+    public static void emailTest(ArrayList<String> messageList,  ArrayList<String> subjectList){
         ArrayList<String> emailsList = new ArrayList<>(Arrays.asList("masha@java.skillbox.ru", "oleg@java.skillbox.ru", "onelove@pivo.ru"
                 , "viktor@java.skillbox.ru"));
 
         List<EmailNotification> emails = new ArrayList<>();
 
         for(int i = 0; i < emailsList.size(); i++){
-            EmailNotification temp = new EmailNotification(messageList.get(i), titleList.get(i));
+            EmailNotification temp = new EmailNotification(messageList.get(i), subjectList.get(i));
             temp.addReceivers(emailsList.get(i));
             int j = i+1;
             while(j<emailsList.size()){
@@ -53,6 +63,13 @@ public class Main {
         sender.send(emails);
 
     }
+
+    /**
+     * Create list of phone numbers
+     * Test notifications for them
+     * @param messageList list of messages from system to receivers
+     * @param titleList list of title of messages
+     */
     public static void pushTest(ArrayList<String> messageList,  ArrayList<String> titleList){
         ArrayList<String> receiversList = new ArrayList<>(Arrays.asList("o.yanovich", "uselessmouth", "pewdiepie", "Kuplinov"));
 
@@ -70,6 +87,11 @@ public class Main {
         System.out.println("Вывод списком");
         sender.send(push);
     }
+    /**
+     * Create list of account nicknames
+     * Test notifications for them
+     * @param messageList list of messages from system to receivers
+     */
     public static void smsTest(ArrayList<String> messageList){
         ArrayList<String> phoneList = new ArrayList<>(Arrays.asList("+70001234567", "+79160152286", "+75559301234", "+71239301234"));
 
