@@ -4,11 +4,10 @@
 package ru.skillbox.notification_sender;
 
 import ru.skillbox.notification.EmailNotification;
-import ru.skillbox.notification.Notification;
 
 import java.util.List;
 
-public class EmailNotificationSender implements NotificationSender{
+public class EmailNotificationSender implements NotificationSender<EmailNotification>{
     public static final String TITLE = "EMAIL";
     public static final String SUBJECTSTR = "subject";
     public static final String RECEIVESTR = "receivers";
@@ -19,18 +18,18 @@ public class EmailNotificationSender implements NotificationSender{
      * @param notification Notification as object
      */
     @Override
-    public void send(Notification notification) {
-        EmailNotification emailNotification = (EmailNotification) notification;
+    public void send(EmailNotification notification) {
+
         StringBuilder arrString = new StringBuilder();
-        for (String receiver : emailNotification.getReceivers()) {
+        for (String receiver : notification.getReceivers()) {
             arrString.append(receiver);
             arrString.append(", ");
         }
 
         String res = TITLE + "\n" +
-                SUBJECTSTR + ": " + emailNotification.getSubject() + "\n" +
+                SUBJECTSTR + ": " + notification.getSubject() + "\n" +
                 RECEIVESTR + ": "  + arrString + "\n" +
-                MESSAGESTR + ": "  + emailNotification.getMessage()+ "\n";
+                MESSAGESTR + ": "  + notification.getMessage()+ "\n";
 
         System.out.println(res);
     }
@@ -40,9 +39,10 @@ public class EmailNotificationSender implements NotificationSender{
      * @param notifications List of notification objects
      */
     @Override
-    public void send(List notifications) {
-        for (Object notification : notifications) {
-            send((EmailNotification) notification);
+    public void send(List<EmailNotification> notifications) {
+        for (EmailNotification notification : notifications) {
+            send(notification);
         }
     }
+
 }

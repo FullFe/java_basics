@@ -3,12 +3,11 @@
  */
 package ru.skillbox.notification_sender;
 
-import ru.skillbox.notification.Notification;
 import ru.skillbox.notification.SmsNotification;
 
 import java.util.List;
 
-public class SmsNotificationSender implements NotificationSender {
+public class SmsNotificationSender implements NotificationSender<SmsNotification> {
     public static final String TITLE = "SMS";
     public static final String RECEIVESTR = "receivers";
     public static final String MESSAGESTR = "message";
@@ -18,16 +17,15 @@ public class SmsNotificationSender implements NotificationSender {
      * @param notification Notification as object
      */
     @Override
-    public void send(Notification notification) {
-        SmsNotification smsNotification = (SmsNotification) notification;
+    public void send(SmsNotification notification) {
         StringBuilder arrString = new StringBuilder();
-        for (String receiver : smsNotification.getReceivers()) {
+        for (String receiver : (notification).getReceivers()) {
             arrString.append(receiver);
             arrString.append(", ");
         }
         String res = TITLE + "\n" +
                 RECEIVESTR + ": " + arrString + "\n"+
-                MESSAGESTR + ": " + smsNotification.getMessage()+ "\n";
+                MESSAGESTR + ": " + (notification).getMessage()+ "\n";
         System.out.println(res);
 
 
@@ -37,9 +35,9 @@ public class SmsNotificationSender implements NotificationSender {
      * @param notifications List of notification objects
      */
     @Override
-    public void send(List notifications) {
-        for (Object notification : notifications) {
-            send((SmsNotification) notification);
+    public void send(List<SmsNotification> notifications) {
+        for (SmsNotification notification : notifications) {
+            send(notification);
         }
     }
 }

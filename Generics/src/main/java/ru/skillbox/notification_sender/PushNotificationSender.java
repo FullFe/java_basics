@@ -4,11 +4,10 @@
 package ru.skillbox.notification_sender;
 
 import ru.skillbox.notification.PushNotification;
-import ru.skillbox.notification.Notification;
 
 import java.util.List;
 
-public class PushNotificationSender implements NotificationSender{
+public class PushNotificationSender implements NotificationSender<PushNotification>{
     public static final String TITLE = "PUSH";
     public static final String TITLESTR = "title";
     public static final String RECEIVESTR = "receiver";
@@ -19,14 +18,13 @@ public class PushNotificationSender implements NotificationSender{
      * @param notification Notification as object
      */
     @Override
-    public void send(Notification notification) {
-        PushNotification pushNotification = (PushNotification) notification;
+    public void send(PushNotification notification) {
 
 
         String res = TITLE + "\n" +
-                TITLESTR + ": " + pushNotification.getNotificationTitle()+ "\n" +
-                RECEIVESTR + ": "  + pushNotification.getAccount() + "\n" +
-                MESSAGESTR + ": "  + pushNotification.getMessage()+ "\n";
+                TITLESTR + ": " + notification.getNotificationTitle()+ "\n" +
+                RECEIVESTR + ": "  + notification.getAccount() + "\n" +
+                MESSAGESTR + ": "  + notification.getMessage()+ "\n";
 
         System.out.println(res);
     }
@@ -35,9 +33,9 @@ public class PushNotificationSender implements NotificationSender{
      * @param notifications List of notification objects
      */
     @Override
-    public void send(List notifications) {
-        for (Object notification : notifications) {
-            send((PushNotification) notification);
+    public void send(List<PushNotification> notifications) {
+        for (PushNotification notification : notifications) {
+            send(notification);
         }
     }
 }
