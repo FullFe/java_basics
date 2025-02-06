@@ -58,10 +58,7 @@ public class JDBCConnection {
 
             }
 
-//            resultSet = statement.executeQuery("SELECT * FROM purchaselist");
-//            while(resultSet.next()){
-//                System.out.println(resultSet.getString("student_name"));
-//            }
+
 
             System.out.println(result);
             resultSet.close();
