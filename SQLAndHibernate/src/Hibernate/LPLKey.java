@@ -15,4 +15,9 @@ public class LPLKey implements Serializable {
     private int studentId;
     private int courseId;
 
+    public LPLKey(){}
+    public LPLKey(int studentId, int courseId){
+        this.studentId = studentId;
+        this.courseId = courseId;
+    }
 }

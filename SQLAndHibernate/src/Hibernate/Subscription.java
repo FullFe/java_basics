@@ -1,6 +1,8 @@
 package Hibernate;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
@@ -8,6 +10,8 @@ import java.util.Date;
 @Entity
 @Table(name="Subscriptions")
 @ToString
+@Getter
+@Setter
 public class Subscription {
 
 

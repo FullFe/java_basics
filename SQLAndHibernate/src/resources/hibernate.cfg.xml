@@ -19,7 +19,7 @@
         <property name="current_session_context_class">thread</property>
         <!-- Drop and re-create the database schema on startup -->
         <property name="hibernate.hbm2ddl.auto">update</property>
-        <property name="hibernate.show_sql">true</property>
+        <!-- <property name="hibernate.show_sql">true</property>-->
         <mapping class="Hibernate.Teacher"></mapping>
         <mapping class="Hibernate.Course"></mapping>
         <mapping class="Hibernate.Student"></mapping>

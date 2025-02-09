@@ -1,8 +1,13 @@
 package Hibernate;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 @Entity
 @Table(name="LinkedPurchasedList")
+@Setter
+@Getter
 public class LinkedPurchasedList {
 
     @EmbeddedId

@@ -23,4 +23,9 @@ public class SubscriptionId implements Serializable {
     public int hashCode() {
         return Objects.hash(courseId, studentId);
     }
+    public SubscriptionId(){}
+    public SubscriptionId(int courseId, int studentId) {
+        this.courseId = courseId;
+        this.studentId = studentId;
+    }
 }
