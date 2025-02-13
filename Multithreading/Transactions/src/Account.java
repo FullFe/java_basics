@@ -18,4 +18,9 @@ public class Account {
     public void setAccNumber(String accNumber) {
         this.accNumber = accNumber;
     }
+
+    public Account(long money, String accNumber) {
+        this.money = money;
+        this.accNumber = accNumber;
+    }
 }
